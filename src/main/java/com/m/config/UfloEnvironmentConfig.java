@@ -19,6 +19,9 @@ public class UfloEnvironmentConfig implements EnvironmentProvider {
     @Autowired
     SessionFactory sessionFactory;
 
+    /**
+     * 指定hibernate的EntityManagerFactory
+     */
     @Autowired
     @Qualifier("sessionFactory")
     EntityManagerFactory entityManagerFactory;
