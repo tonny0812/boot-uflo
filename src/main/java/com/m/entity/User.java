@@ -1,14 +1,15 @@
-package com.m.model;
+package com.m.entity;
 
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Data
 @Entity
-@Table(name = "role")
-public class Role {
+@Table(name = "user")
+public class User implements Serializable {
     /**
      * 自增id主键
      */
@@ -17,20 +18,25 @@ public class Role {
     @Column(name = "id")
     private Integer id;
     /**
-     * 角色名
+     * 用户名
      */
     @Column(name = "name")
     private String name;
     /**
-     * 角色描述
+     * 用户密码
      */
-    @Column(name = "remarks")
-    private String remarks;
+    @Column(name = "password")
+    private String password;
     /**
      *  创建时间
      */
     @Column(name = "created_time")
     private LocalDate createdTime;
+    /**
+     *  职位
+     */
+    @Column(name = "position")
+    private String position;
     /**
      *  状态
      */
