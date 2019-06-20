@@ -1,0 +1,21 @@
+server:
+  port: 8089
+spring:
+  # 热部署配置
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    jdbc-url: jdbc:mysql:///uflo?useUnicode=true&characterEncoding=utf-8&useSSL=true
+    username: root
+    password: root
+    hikari:
+      maxLifetime: 1765000
+      maximumPoolSize: 15
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL5Dialect
