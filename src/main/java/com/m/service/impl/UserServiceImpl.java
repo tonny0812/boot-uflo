@@ -5,6 +5,8 @@ import com.m.entity.User;
 import com.m.repository.UserRepository;
 import com.m.service.UserService;
 import com.m.utils.MD5Util;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserServiceImpl implements UserService {
+    protected Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Autowired
     UserRepository userRepository;
@@ -50,6 +53,7 @@ public class UserServiceImpl implements UserService {
         BeanUtils.copyProperties(userModel, user);
         user.setPassword(password);
         User result = userRepository.saveAndFlush(user);
+        logger.info("user result name: " + result.getName());
         return result.getId();
     }
 

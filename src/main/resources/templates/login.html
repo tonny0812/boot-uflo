@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>用户登录</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+    <script type="text/javascript" th:src="@{/jquery-3.3.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/bootstrap.min.js}"></script>
+</head>
+<body>
+    <div class="mycenter">
+        <div class="mysign">
+            <div class="col-lg-11 text-center text-info">
+                <h2>请登录</h2>
+            </div>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="username" name="name" placeholder="请输入账户名" required autofocus/>
+            </div>
+            <div class="col-lg-10"></div>
+            <div class="col-lg-10">
+                <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码" required autofocus/>
+            </div>
+            <div class="col-lg-10">
+                <button id="fromSubmit" class="btn btn-success col-lg-12">登录</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    $('body').on('click', '#fromSubmit', function() {
+        $.ajax({
+            type: 'post',
+            url: '/user/login',
+            data: {
+                name: $('#username').val(),
+                password: $('#password').val()
+            },
+            success: function (result) {
+                console.log("fromSubmit result: " + result.code);
+                if (result.code == 200) {
+                    window.location.href = '/operation';
+                } else {
+                    alert(result.msg)
+                }
+            }
+        });
+    });
+</script>
+</html>

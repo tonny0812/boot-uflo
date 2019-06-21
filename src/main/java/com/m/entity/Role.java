@@ -1,6 +1,7 @@
 package com.m.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -9,6 +10,7 @@ import java.time.LocalDate;
 @Data
 @Entity
 @Table(name = "role")
+@DynamicInsert
 public class Role implements Serializable {
     /**
      * 自增id主键
