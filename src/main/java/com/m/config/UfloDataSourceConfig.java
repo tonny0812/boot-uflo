@@ -32,7 +32,7 @@ public class UfloDataSourceConfig {
         properties.setProperty("hibernate.show_sql", showSql);
         properties.setProperty("hibernate.hbm2ddl.auto", ddl);
         sessionFactory.setHibernateProperties(properties);
-        sessionFactory.setPackagesToScan("com.bstek.uflo.entity");
+        sessionFactory.setPackagesToScan("com.bstek.uflo.entity", "com.bstek.uflo.model");
         return sessionFactory;
     }
 
