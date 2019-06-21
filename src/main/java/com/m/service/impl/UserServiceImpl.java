@@ -18,6 +18,11 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
 
+    /**
+     * 通过用户id查询用户信息
+     * @param Id
+     * @return
+     */
     @Override
     @Transactional(transactionManager = "primaryTransactionManager", propagation = Propagation.REQUIRED)
     public User getUserById(Integer Id) {
@@ -30,9 +35,13 @@ public class UserServiceImpl implements UserService {
         }else{
             return null;
         }
-//        return null;
     }
 
+    /**
+     * 创建用户
+     * @param userModel
+     * @return
+     */
     @Override
     @Transactional(transactionManager = "primaryTransactionManager", propagation = Propagation.REQUIRED)
     public int createUser(UserModel userModel) {
@@ -44,6 +53,11 @@ public class UserServiceImpl implements UserService {
         return result.getId();
     }
 
+    /**
+     * 通过用户name查询用户信息
+     * @param userName
+     * @return
+     */
     @Override
     @Transactional(transactionManager = "primaryTransactionManager", propagation = Propagation.REQUIRED)
     public User getUserByName(String userName) {

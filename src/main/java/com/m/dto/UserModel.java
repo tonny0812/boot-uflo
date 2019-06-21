@@ -4,7 +4,9 @@ import lombok.Data;
 
 import java.io.Serializable;
 
-
+/**
+ * user数据传输类
+ */
 @Data
 public class UserModel implements Serializable {
     /**

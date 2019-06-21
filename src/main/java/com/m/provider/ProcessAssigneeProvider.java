@@ -26,6 +26,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * 获取平台用户角色
+ */
 @Component
 public class ProcessAssigneeProvider implements AssigneeProvider {
     @Autowired

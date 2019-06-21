@@ -3,7 +3,9 @@ package com.m.utils;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-
+/**
+ * MD5工具类
+ */
 public class MD5Util {
 
     private final static String[] strDigits = { "0", "1", "2", "3", "4", "5",

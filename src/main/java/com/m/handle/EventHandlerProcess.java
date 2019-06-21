@@ -1,4 +1,4 @@
-package com.m.uflo;
+package com.m.handle;
 
 import com.bstek.uflo.env.Context;
 import com.bstek.uflo.model.ProcessDefinition;
@@ -10,6 +10,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * 获取流程开始结束函数,进行相应处理
+ */
 @Component
 public class EventHandlerProcess implements ProcessEventHandler {
     protected Logger logger = LoggerFactory.getLogger(EventHandlerProcess.class);
