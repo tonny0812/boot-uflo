@@ -23,6 +23,11 @@ public class Role implements Serializable {
     @Column(name = "name")
     private String name;
     /**
+     * 角色类型
+     */
+    @Column(name = "type")
+    private Integer type;
+    /**
      * 角色描述
      */
     @Column(name = "remarks")

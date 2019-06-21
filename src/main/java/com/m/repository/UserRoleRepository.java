@@ -10,5 +10,5 @@ import java.util.List;
 
 @Repository
 public interface UserRoleRepository extends JpaRepository<UserRole, Integer> {
-    List<UserRole> findByRoleAndApprovalStatus(Role role, Integer status);
+    List<UserRole> findByRoleAndApprovalState(Role role, Integer state);
 }

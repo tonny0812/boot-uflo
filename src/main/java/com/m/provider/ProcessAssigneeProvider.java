@@ -9,6 +9,8 @@ import com.m.entity.Role;
 import com.m.entity.UserRole;
 import com.m.repository.RoleRepository;
 import com.m.repository.UserRoleRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -29,8 +31,8 @@ import java.util.Optional;
 /**
  * 获取平台用户角色
  */
-@Component
 public class ProcessAssigneeProvider implements AssigneeProvider {
+    protected Logger logger = LoggerFactory.getLogger(ProcessAssigneeProvider.class);
     @Autowired
     RoleRepository roleRepository;
     @Autowired
@@ -48,43 +50,46 @@ public class ProcessAssigneeProvider implements AssigneeProvider {
 
     @Override
     public void queryEntities(PageQuery<Entity> pageQuery, String str) {
-        Pageable pageable = PageRequest.of(pageQuery.getPageIndex() - 1,
-                pageQuery.getPageSize(), Sort.Direction.DESC, "createdTime");
-        Specification<Role> specification = new Specification<Role>() {
-
-            @Override
-            public Predicate toPredicate(Root<Role> root,
-                                         CriteriaQuery<?> query, CriteriaBuilder cb) {
-                List<Predicate> predicates = new ArrayList<>();
-                predicates.add(cb.notEqual(
-                        root.get("status").as(Integer.TYPE), -1));
-                predicates.add(cb.equal(
-                        root.get("type").as(Integer.TYPE), 1));
-                return cb.and(predicates.toArray(new Predicate[predicates
-                        .size()]));
-            }
-
-        };
-        Page<Role> pages = roleRepository.findAll(specification, pageable);
-        List<Entity> entityList=new ArrayList<>();
-        for (Role role : pages.getContent()) {
-            Entity entity=new Entity(role.getId().toString(),role.getName());
-            entityList.add(entity);
-            pageQuery.setResult(entityList);
-        }
-        pageQuery.setRecordCount(Integer.parseInt(pages.getTotalElements()+""));
+//        Pageable pageable = PageRequest.of(pageQuery.getPageIndex() - 1,
+//                pageQuery.getPageSize(), Sort.Direction.DESC, "createdTime");
+//        Specification<Role> specification = new Specification<Role>() {
+//
+//            @Override
+//            public Predicate toPredicate(Root<Role> root,
+//                                         CriteriaQuery<?> query, CriteriaBuilder cb) {
+//                List<Predicate> predicates = new ArrayList<>();
+//                predicates.add(cb.equal(
+//                        root.get("status").as(Integer.TYPE), 1));
+//                predicates.add(cb.equal(
+//                        root.get("type").as(Integer.TYPE), 0));
+//                return cb.and(predicates.toArray(new Predicate[predicates
+//                        .size()]));
+//            }
+//
+//        };
+//        Page<Role> pages = roleRepository.findAll(specification, pageable);
+//        List<Entity> entityList=new ArrayList<>();
+//        for (Role role : pages.getContent()) {
+//            logger.info("queryEntities roleName: " + role.getName());
+//            Entity entity=new Entity(role.getId().toString(),role.getName());
+//            entityList.add(entity);
+//            pageQuery.setResult(entityList);
+//        }
+//        pageQuery.setRecordCount(Integer.parseInt(pages.getTotalElements()+""));
     }
 
     @Override
     public Collection<String> getUsers(String entityId, Context context, ProcessInstance processInstance) {
-        Optional<Role> roleOptional = roleRepository.findById(Integer.valueOf(entityId));
-        Role role = roleOptional.get();
-        List<UserRole> userRoles=userRoleRepository.findByRoleAndApprovalStatus(role,1);
-        Collection<String> users=new ArrayList<String>();
-        for(UserRole userRole:userRoles){
-            users.add(userRole.getUser().getName());
-        }
-        return users;
+//        Optional<Role> roleOptional = roleRepository.findById(Integer.valueOf(entityId));
+//        Role role = roleOptional.get();
+//        logger.info("getUsers roleName: " + role.getName());
+//        List<UserRole> userRoles=userRoleRepository.findByRoleAndApprovalState(role,1);
+//        Collection<String> users=new ArrayList<String>();
+//        for(UserRole userRole:userRoles){
+//            users.add(userRole.getUser().getName());
+//        }
+//        return users;
+        return null;
     }
 
     @Override
