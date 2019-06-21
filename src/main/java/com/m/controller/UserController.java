@@ -8,6 +8,7 @@ import com.m.utils.MD5Util;
 import com.m.utils.RequestHolderUtil;
 import com.m.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -50,5 +51,10 @@ public class UserController {
             return ResultUtil.success("登陆成功");
         }
         return ResultUtil.error(CodeMsg.COOKIE_ERROR);
+    }
+
+    @GetMapping("/approve")
+    public ResultUtil<String> approve() {
+        return ResultUtil.success("审批成功");
     }
 }
