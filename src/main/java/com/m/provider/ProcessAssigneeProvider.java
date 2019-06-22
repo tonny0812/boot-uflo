@@ -34,6 +34,7 @@ import java.util.Optional;
 @Component
 public class ProcessAssigneeProvider implements AssigneeProvider {
     protected Logger logger = LoggerFactory.getLogger(ProcessAssigneeProvider.class);
+
     @Autowired
     RoleRepository roleRepository;
     @Autowired
@@ -69,14 +70,14 @@ public class ProcessAssigneeProvider implements AssigneeProvider {
 
         };
         Page<Role> pages = roleRepository.findAll(specification, pageable);
-        List<Entity> entityList=new ArrayList<>();
+        List<Entity> entityList = new ArrayList<>();
         for (Role role : pages.getContent()) {
             logger.info("queryEntities roleName: " + role.getName());
-            Entity entity=new Entity(role.getId().toString(),role.getName());
+            Entity entity = new Entity(role.getId().toString(), role.getName());
             entityList.add(entity);
             pageQuery.setResult(entityList);
         }
-        pageQuery.setRecordCount(Integer.parseInt(pages.getTotalElements()+""));
+        pageQuery.setRecordCount(Integer.parseInt(pages.getTotalElements() + ""));
     }
 
     @Override
@@ -84,9 +85,9 @@ public class ProcessAssigneeProvider implements AssigneeProvider {
         Optional<Role> roleOptional = roleRepository.findById(Integer.valueOf(entityId));
         Role role = roleOptional.get();
         logger.info("getUsers roleName: " + role.getName());
-        List<UserRole> userRoles=userRoleRepository.findByRoleAndApprovalState(role,1);
-        Collection<String> users=new ArrayList<String>();
-        for(UserRole userRole:userRoles){
+        List<UserRole> userRoles = userRoleRepository.findByRoleAndApprovalState(role, 1);
+        Collection<String> users = new ArrayList<String>();
+        for (UserRole userRole : userRoles) {
             users.add(userRole.getUser().getName());
         }
         return users;

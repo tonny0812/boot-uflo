@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication
 @EnableTransactionManagement(proxyTargetClass=true)
 @ImportResource(locations = {"classpath:uflo-console-context.xml"})
+@ServletComponentScan
 public class BootUfloApplication {
 
     public static void main(String[] args) {

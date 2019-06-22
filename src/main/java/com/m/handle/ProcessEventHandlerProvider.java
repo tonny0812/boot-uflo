@@ -14,8 +14,8 @@ import org.springframework.stereotype.Component;
  * 获取流程开始结束函数,进行相应处理
  */
 @Component
-public class EventHandlerProcess implements ProcessEventHandler {
-    protected Logger logger = LoggerFactory.getLogger(EventHandlerProcess.class);
+public class ProcessEventHandlerProvider implements ProcessEventHandler {
+    protected Logger logger = LoggerFactory.getLogger(ProcessEventHandlerProvider.class);
 
     @Autowired
     ProcessService processService;

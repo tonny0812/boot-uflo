@@ -44,9 +44,8 @@ public class UfloEnvironmentConfig implements EnvironmentProvider {
 
     @Override
     public String getLoginUser() {
-//        HttpServletRequest request = RequestHolderUtil.getThreadLocal();
-//        return (String) request.getSession().getAttribute("user");
-        return "mxw";
+        HttpServletRequest request = RequestHolderUtil.getThreadLocal();
+        return (String) request.getSession().getAttribute("user");
     }
 
 }
