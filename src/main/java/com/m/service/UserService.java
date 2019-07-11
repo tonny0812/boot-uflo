@@ -7,4 +7,5 @@ public interface UserService {
     User getUserById(Integer Id);
     int createUser(UserModel userModel);
     User getUserByName(String userName);
+
 }

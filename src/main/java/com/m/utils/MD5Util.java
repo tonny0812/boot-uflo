@@ -1,5 +1,7 @@
 package com.m.utils;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -45,5 +47,12 @@ public class MD5Util {
             ex.printStackTrace();
         }
         return resultString;
+    }
+
+    public static void main(String[] args) {
+        StringBuffer salt = new StringBuffer("sn=");
+        salt.append("13191300110").append("&token=").append("8a7b5795c0a2dd2c11e0e6fe4057c3b4");
+        String ackStr = DigestUtils.md5Hex(salt.toString());
+        System.out.println(ackStr);
     }
 }
